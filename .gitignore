@@ -6,11 +6,17 @@
 *.ko
 *.obj
 *.elf
+*.dep
+*.crf
 
 # Linker output
 *.ilk
 *.map
 *.exp
+*.map
+*.lst
+*.lnp
+*.htm
 
 # Precompiled Headers
 *.gch
@@ -35,6 +41,8 @@
 *.i*86
 *.x86_64
 *.hex
+*.axf
+
 
 # Debug files
 *.dSYM/
