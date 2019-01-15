@@ -63,10 +63,10 @@
 
 // <e> USART1 (Universal synchronous asynchronous receiver transmitter)
 // <i> Configuration settings for Driver_USART1 in component ::CMSIS Driver:USART
-#define RTE_USART1                       0
+#define RTE_USART1                       1
 
 //   <o> USART1_TX Pin <0=>Not Used <1=>PA9
-#define RTE_USART1_TX_PORT_ID_DEF       0
+#define RTE_USART1_TX_PORT_ID_DEF       1
 #if    (RTE_USART1_TX_PORT_ID_DEF == 0)
 #define RTE_USART1_TX_DEF               0
 #elif  (RTE_USART1_TX_PORT_ID_DEF == 1)
@@ -78,7 +78,7 @@
 #endif
 
 //   <o> USART1_RX Pin <0=>Not Used <1=>PA10
-#define RTE_USART1_RX_PORT_ID_DEF       0
+#define RTE_USART1_RX_PORT_ID_DEF       1
 #if    (RTE_USART1_RX_PORT_ID_DEF == 0)
 #define RTE_USART1_RX_DEF               0
 #elif  (RTE_USART1_RX_PORT_ID_DEF == 1)
@@ -90,7 +90,7 @@
 #endif
 
 //   <o> USART1_CK Pin <0=>Not Used <1=>PA8
-#define RTE_USART1_CK_PORT_ID_DEF       0
+#define RTE_USART1_CK_PORT_ID_DEF       1
 #if    (RTE_USART1_CK_PORT_ID_DEF == 0)
 #define RTE_USART1_CK                   0
 #elif  (RTE_USART1_CK_PORT_ID_DEF == 1)
@@ -102,7 +102,7 @@
 #endif
 
 //   <o> USART1_CTS Pin <0=>Not Used <1=>PA11
-#define RTE_USART1_CTS_PORT_ID_DEF      0
+#define RTE_USART1_CTS_PORT_ID_DEF      1
 #if    (RTE_USART1_CTS_PORT_ID_DEF == 0)
 #define RTE_USART1_CTS                  0
 #elif  (RTE_USART1_CTS_PORT_ID_DEF == 1)
@@ -114,7 +114,7 @@
 #endif
 
 //   <o> USART1_RTS Pin <0=>Not Used <1=>PA12
-#define RTE_USART1_RTS_PORT_ID_DEF      0
+#define RTE_USART1_RTS_PORT_ID_DEF      1
 #if    (RTE_USART1_RTS_PORT_ID_DEF == 0)
 #define RTE_USART1_RTS                  0
 #elif  (RTE_USART1_RTS_PORT_ID_DEF == 1)
@@ -213,10 +213,10 @@
 
 // <e> USART2 (Universal synchronous asynchronous receiver transmitter)
 // <i> Configuration settings for Driver_USART2 in component ::CMSIS Driver:USART
-#define RTE_USART2                      0
+#define RTE_USART2                      1
 
 //   <o> USART2_TX Pin <0=>Not Used <1=>PA2
-#define RTE_USART2_TX_PORT_ID_DEF       0
+#define RTE_USART2_TX_PORT_ID_DEF       1
 #if    (RTE_USART2_TX_PORT_ID_DEF == 0)
 #define RTE_USART2_TX_DEF               0
 #elif  (RTE_USART2_TX_PORT_ID_DEF == 1)
@@ -228,7 +228,7 @@
 #endif
 
 //   <o> USART2_RX Pin <0=>Not Used <1=>PA3
-#define RTE_USART2_RX_PORT_ID_DEF       0
+#define RTE_USART2_RX_PORT_ID_DEF       1
 #if    (RTE_USART2_RX_PORT_ID_DEF == 0)
 #define RTE_USART2_RX_DEF               0
 #elif  (RTE_USART2_RX_PORT_ID_DEF == 1)
@@ -240,7 +240,7 @@
 #endif
 
 //   <o> USART2_CK Pin <0=>Not Used <1=>PA4
-#define RTE_USART2_CK_PORT_ID_DEF       0
+#define RTE_USART2_CK_PORT_ID_DEF       1
 #if    (RTE_USART2_CK_PORT_ID_DEF == 0)
 #define RTE_USART2_CK_DEF               0
 #elif  (RTE_USART2_CK_PORT_ID_DEF == 1)
@@ -252,7 +252,7 @@
 #endif
 
 //   <o> USART2_CTS Pin <0=>Not Used <1=>PA0
-#define RTE_USART2_CTS_PORT_ID_DEF      0
+#define RTE_USART2_CTS_PORT_ID_DEF      1
 #if    (RTE_USART2_CTS_PORT_ID_DEF == 0)
 #define RTE_USART2_CTS_DEF              0
 #elif  (RTE_USART2_CTS_PORT_ID_DEF == 1)
@@ -264,7 +264,7 @@
 #endif
 
 //   <o> USART2_RTS Pin <0=>Not Used <1=>PA1
-#define RTE_USART2_RTS_PORT_ID_DEF      0
+#define RTE_USART2_RTS_PORT_ID_DEF      1
 #if    (RTE_USART2_RTS_PORT_ID_DEF == 0)
 #define RTE_USART2_RTS_DEF              0
 #elif  (RTE_USART2_RTS_PORT_ID_DEF == 1)
