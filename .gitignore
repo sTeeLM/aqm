@@ -1,60 +1,65 @@
 # Prerequisites
 *.d
 
-# Object files
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.ko
 *.obj
-*.elf
-*.dep
-*.crf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-*.map
-*.lst
 *.lnp
-*.htm
+*.map
+*.sct
+*.dep
+*.lst
+*.i
+*.__i
+*._i
+*.crf
+*.sct
+*.iex
 
 # Precompiled Headers
 *.gch
 *.pch
+*.ipch
+*.tlog
+*.pdb
+*.idb
+*.ilk
+*.res
+*.exe.recipe
+*.log
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
+# Compiled Dynamic libraries
 *.so
-*.so.*
 *.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+*.db
 
 # Executables
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
-*.hex
 *.axf
+*.hex
+*.bin
 
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Other Files
+IVClock.vcxproj.FileListAbsolute.txt
+.DS_Store
+IVClock.build_log.htm
+IVClock.htm
+IVClock.hex.asm
+.vs
+Debug
+Release
