@@ -60,20 +60,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BEEPER_Pin GPIO_PIN_8
-#define BEEPER_GPIO_Port GPIOA
-#define POWER_Pin GPIO_PIN_11
-#define POWER_GPIO_Port GPIOA
-#define PMS_RESET_Pin GPIO_PIN_15
-#define PMS_RESET_GPIO_Port GPIOA
-#define PMS_SET_Pin GPIO_PIN_3
-#define PMS_SET_GPIO_Port GPIOB
-#define INT_KEY_MOD_Pin GPIO_PIN_4
-#define INT_KEY_MOD_GPIO_Port GPIOB
-#define INT_KEY_SET_Pin GPIO_PIN_5
-#define INT_KEY_SET_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
+#include "bsp.h"
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
