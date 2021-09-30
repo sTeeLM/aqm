@@ -459,6 +459,26 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, POWER_Pin|PMS_RESET_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(PMS_SET_GPIO_Port, PMS_SET_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : POWER_Pin PMS_RESET_Pin */
+  GPIO_InitStruct.Pin = POWER_Pin|PMS_RESET_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PMS_SET_Pin */
+  GPIO_InitStruct.Pin = PMS_SET_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(PMS_SET_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pins : INT_KEY_MOD_Pin INT_KEY_SET_Pin */
   GPIO_InitStruct.Pin = INT_KEY_MOD_Pin|INT_KEY_SET_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
