@@ -8,12 +8,12 @@
 
 #include "con_help.h"
 #include "con_clock.h"
-#include "con_motion_sensor.h"
-#include "con_power.h"
-#include "con_beeper.h"
-#include "con_display.h"
-#include "con_player.h"
-#include "con_alarm.h"
+//#include "con_motion_sensor.h"
+//#include "con_power.h"
+//#include "con_beeper.h"
+//#include "con_display.h"
+//#include "con_player.h"
+//#include "con_alarm.h"
 
 #define CONSOLE_BUFFER_SIZE 41
 
@@ -37,55 +37,55 @@ struct console_cmds cmds[] =
                       "? <cmd>: show usage of cmd",
                       con_help},
   {"clk", "show clock", "clk: show clock\r\n", con_clock},
-  {"alm", "show alarm", 
-                        "alm: show alarm\r\n",
-                        con_alarm},
-  {"mon", "motion control",
-                        "mon: show motion sensor status\r\n"
-                        "mon int: read motion sensor isr\r\n",  
-                        con_motion_sensor},
-  {"pow", "power control", 
-                        "pow: show power status\r\n"
-                        "pow 33 on | off: 3.3v on/off\r\n"
-                        "pow 50 on | off: 5.0v on/off\r\n" 
-                        "pow 490 on | off: 49v on/off\r\n"
-                        "pow iv18 on | off: iv18 on/off\r\n" 
-                        "pow cal65: calibrate 6.5V\r\n"
-                        "pow cal90: calibrate 9.0V\r\n"   
-                        "pow bat: show volage of battery\r\n",       
-                        con_power}, 
-  {"be", "beeper control", 
-                        "be: show status\r\n"
-                        "be b: be\r\n"
-                        "be bb: be ber\n" 
-                        "be on: beeper enable\r\n"
-                        "be off: beeper disable\r\n",    
-                        con_beeper},   
-  {"dis", "display control", 
-                        "dis: show status\r\n"
-                        "dis on: display on\r\n"
-                        "dis off: display off\r\n"  
-                        "dis sdp n: set dp\r\n"
-                        "dis cdp n: clr dp off\r\n" 
-                        "dis sbl n: set blink\r\n"
-                        "dis cbl n: clr blink off\r\n"
-                        "dis lt: show light\r\n"    
-                        "dis lt n: set brightness 1 ~ 100\r\n" 
-                        "dis cal0: calibrate light 0\r\n"   
-                        "dis cal100: calibrate light 100\r\n"  
-                        "dis mon on | off: mon light on off\r\n"    
-                        "dis n c: set dig\r\n",     
-                        con_display}, 
-  {"ply", "player control", 
-                        "ply: show status\r\n"
-                        "ply on: player on\r\n"
-                        "ply off: player off\n" 
-                        "ply clk: report clock\r\n"
-                        "ply tmp: report temperature\r\n"  
-                        "ply alm n: player alarm sound\r\n" 
-                        "ply stp: stop play\r\n",   
-                        con_player},   
-  {"!", "quit the console", "!", con_quit},
+//  {"alm", "show alarm", 
+//                        "alm: show alarm\r\n",
+//                        con_alarm},
+//  {"mon", "motion control",
+//                        "mon: show motion sensor status\r\n"
+//                        "mon int: read motion sensor isr\r\n",  
+//                        con_motion_sensor},
+//  {"pow", "power control", 
+//                        "pow: show power status\r\n"
+//                        "pow 33 on | off: 3.3v on/off\r\n"
+//                        "pow 50 on | off: 5.0v on/off\r\n" 
+//                        "pow 490 on | off: 49v on/off\r\n"
+//                        "pow iv18 on | off: iv18 on/off\r\n" 
+//                        "pow cal65: calibrate 6.5V\r\n"
+//                        "pow cal90: calibrate 9.0V\r\n"   
+//                        "pow bat: show volage of battery\r\n",       
+//                        con_power}, 
+//  {"be", "beeper control", 
+//                        "be: show status\r\n"
+//                        "be b: be\r\n"
+//                        "be bb: be ber\n" 
+//                        "be on: beeper enable\r\n"
+//                        "be off: beeper disable\r\n",    
+//                        con_beeper},   
+//  {"dis", "display control", 
+//                        "dis: show status\r\n"
+//                        "dis on: display on\r\n"
+//                        "dis off: display off\r\n"  
+//                        "dis sdp n: set dp\r\n"
+//                        "dis cdp n: clr dp off\r\n" 
+//                        "dis sbl n: set blink\r\n"
+//                        "dis cbl n: clr blink off\r\n"
+//                        "dis lt: show light\r\n"    
+//                        "dis lt n: set brightness 1 ~ 100\r\n" 
+//                        "dis cal0: calibrate light 0\r\n"   
+//                        "dis cal100: calibrate light 100\r\n"  
+//                        "dis mon on | off: mon light on off\r\n"    
+//                        "dis n c: set dig\r\n",     
+//                        con_display}, 
+//  {"ply", "player control", 
+//                        "ply: show status\r\n"
+//                        "ply on: player on\r\n"
+//                        "ply off: player off\n" 
+//                        "ply clk: report clock\r\n"
+//                        "ply tmp: report temperature\r\n"  
+//                        "ply alm n: player alarm sound\r\n" 
+//                        "ply stp: stop play\r\n",   
+//                        con_player},   
+//  {"!", "quit the console", "!", con_quit},
 }; 
 
 

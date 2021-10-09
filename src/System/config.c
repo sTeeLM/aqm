@@ -8,41 +8,43 @@
 static const uint8_t alarm_blob0[] = {0,0,0,0};
 
 static const config_slot_t _slot[] = {
-  {"time_12", CONFIG_TYPE_UINT8,   {.val8 = 1}},
-  {"acc_en",CONFIG_TYPE_UINT8,     {.val8 = 1}},
-  {"bp_en",CONFIG_TYPE_UINT8,      {.val8 = 1}},
-  {"alm1_en", CONFIG_TYPE_UINT8,   {.val8 = 1}}, 
-  {"alm1_begin", CONFIG_TYPE_UINT8, {.val8 = 8}}, 
-  {"alm1_end", CONFIG_TYPE_UINT8,   {.val8 = 22}},  
-  {"bat_65", CONFIG_TYPE_UINT16,   {.val16 = 2421}},
-  {"bat_90", CONFIG_TYPE_UINT16,   {.val16 = 3667}},   
-  {"lt_0", CONFIG_TYPE_UINT16,     {.val16 = 354}},
-  {"lt_100", CONFIG_TYPE_UINT16,   {.val16 = 920}}, 
-  {"mon_lt_en", CONFIG_TYPE_UINT8, {.val8 = 1}},
-  {"temp_cen", CONFIG_TYPE_UINT8,  {.val8 = 1}}, 
-  {"power_timeo", CONFIG_TYPE_UINT8,  {.val8 = 15}},
-  {"tmr_snd", CONFIG_TYPE_UINT8, {.val8 = 0}},
-  {"ply_vol", CONFIG_TYPE_UINT8, {.val8 = 10}},  
-  {"alm00_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}}, 
-  {"alm01_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}},
-  {"alm02_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}}, 
-  {"alm03_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}},
-  {"alm04_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}}, 
-  {"alm05_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}},
-  {"alm06_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}}, 
-  {"alm07_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}},
-  {"alm08_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}}, 
-  {"alm09_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
-    .valblob.body = alarm_blob0}},  
+  {"time_12", CONFIG_TYPE_UINT8,    {.val8 = 1}},
+  {"acc_en",  CONFIG_TYPE_UINT8,    {.val8 = 1}},
+  {"bp_en",   CONFIG_TYPE_UINT8,    {.val8 = 1}},
+//  {"acc_en",CONFIG_TYPE_UINT8,     {.val8 = 1}},
+//  {"bp_en",CONFIG_TYPE_UINT8,      {.val8 = 1}},
+//  {"alm1_en", CONFIG_TYPE_UINT8,   {.val8 = 1}}, 
+//  {"alm1_begin", CONFIG_TYPE_UINT8, {.val8 = 8}}, 
+//  {"alm1_end", CONFIG_TYPE_UINT8,   {.val8 = 22}},  
+//  {"bat_65", CONFIG_TYPE_UINT16,   {.val16 = 2421}},
+//  {"bat_90", CONFIG_TYPE_UINT16,   {.val16 = 3667}},   
+//  {"lt_0", CONFIG_TYPE_UINT16,     {.val16 = 354}},
+//  {"lt_100", CONFIG_TYPE_UINT16,   {.val16 = 920}}, 
+//  {"mon_lt_en", CONFIG_TYPE_UINT8, {.val8 = 1}},
+//  {"temp_cen", CONFIG_TYPE_UINT8,  {.val8 = 1}}, 
+//  {"power_timeo", CONFIG_TYPE_UINT8,  {.val8 = 15}},
+//  {"tmr_snd", CONFIG_TYPE_UINT8, {.val8 = 0}},
+//  {"ply_vol", CONFIG_TYPE_UINT8, {.val8 = 10}},  
+//  {"alm00_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}}, 
+//  {"alm01_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}},
+//  {"alm02_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}}, 
+//  {"alm03_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}},
+//  {"alm04_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}}, 
+//  {"alm05_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}},
+//  {"alm06_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}}, 
+//  {"alm07_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}},
+//  {"alm08_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}}, 
+//  {"alm09_cfg", CONFIG_TYPE_BLOB,  {.valblob.len = sizeof(alarm_blob0),
+//    .valblob.body = alarm_blob0}},  
 };
 
 
@@ -82,7 +84,7 @@ static const config_slot_t * find_config(const char * name, uint32_t * offset)
   *offset = 0;
   for(i = 0 ; i < sizeof(_slot) / sizeof(config_slot_t) ; i ++) { 
     if(strcmp(name, _slot[i].name) == 0) {
-      IVDBG("find_config %s offset at %d", name, *offset);
+      AQMDBG("find_config %s offset at %d", name, *offset);
       return &_slot[i];
     }
     switch(_slot[i].type) {
@@ -109,7 +111,7 @@ static void config_dump(void)
   uint32_t i, j, offset = 0;
   config_val_t val;
   uint8_t buffer[8];
-  IVDBG("dump all config begin ----------------------");
+  AQMDBG("dump all config begin ----------------------");
   for(i = 0 ; i < sizeof(_slot) / sizeof(config_slot_t) ; i ++) { 
     switch(_slot[i].type) {
       case CONFIG_TYPE_UINT8:
@@ -131,37 +133,37 @@ static void config_dump(void)
       default: ;
     }
     if(_slot[i].type != CONFIG_TYPE_BLOB) {
-      IVDBG("[0x%08x] %s : %d", offset, _slot[i].name, 
+      AQMDBG("[0x%08x] %s : %d", offset, _slot[i].name, 
         _slot[i].type == CONFIG_TYPE_UINT8 ? val.val8 : 
         (_slot[i].type == CONFIG_TYPE_UINT16 ? val.val16 : 
         (_slot[i].type == CONFIG_TYPE_UINT32 ? val.val32 : 0))
       );
     } else {
-      IVDBG("[0x%08x] %s (blob len = %d):", offset, _slot[i].name, val.valblob.len);
+      AQMDBG("[0x%08x] %s (blob len = %d):", offset, _slot[i].name, val.valblob.len);
       for(j = 0 ; j < val.valblob.len / 8 ; j ++) {
         BSP_ROM_Read(offset, buffer, sizeof(buffer));
         offset += 8;
-        IVDBG(" %02x %02x %02x %02x %02x %02x %02x %02x",
+        AQMDBG(" %02x %02x %02x %02x %02x %02x %02x %02x",
           buffer[0],buffer[1],buffer[2],buffer[3],
           buffer[4],buffer[5],buffer[6],buffer[7]
         );
       }
       BSP_ROM_Read(offset, buffer, val.valblob.len % 8);
       offset += val.valblob.len % 8;
-      IVDBG_RH;
+      AQMDBG_RH;
       for(j = 0 ; j < val.valblob.len % 8 ; j ++) {
-        IVDBG_R(" %02x", buffer[j]);
+        AQMDBG_R(" %02x", buffer[j]);
       }
-      IVDBG_RT;
+      AQMDBG_RT;
     }
   } 
-  IVDBG("dump all config end ----------------------");
+  AQMDBG("dump all config end ----------------------");
 }
 
 void config_init(void)
 {
   if(button_is_factory_reset()) { //12:10:30 PM
-    IVINFO("config factory reset");
+    AQMINFO("config factory reset");
     config_factory_reset();
   }    
   config_dump();
@@ -215,7 +217,7 @@ uint32_t config_read_int(const char * name)
       default: ;
     }
   } else {
-    IVERR("config_read: %s not exist!", name);
+    AQMERR("config_read: %s not exist!", name);
   }
   return ret;
 }
@@ -241,6 +243,6 @@ void config_write(const char * name, const config_val_t * val)
       default: ;
     }
   } else {
-    IVERR("config_write: %s not exist!", name);
+    AQMERR("config_write: %s not exist!", name);
   }
 }

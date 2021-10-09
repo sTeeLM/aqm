@@ -1,9 +1,15 @@
 #include "tim.h"
+#include "debug.h"
 
-static TIM_HandleTypeDef htim1;
-TIM_HandleTypeDef htim2;
+static TIM_HandleTypeDef htim1; // beeper
+static TIM_HandleTypeDef htim2; // timer
 
 static void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim);
+
+static uint8_t BSP_TIM1_Cnt;
+static uint8_t BSP_TIM1_Dur;
+static uint8_t BSP_TIM1_Loop;
+static uint8_t BSP_TIM1_Beeper;
 
 /**
   * @brief TIM1 Initialization Function
@@ -52,7 +58,7 @@ BSP_Error_Type BSP_TIM1_Init(void)
     return BSP_ERROR_INTERNAL;
   }
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
+  sConfigOC.Pulse = 32767;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
@@ -74,11 +80,72 @@ BSP_Error_Type BSP_TIM1_Init(void)
     return BSP_ERROR_INTERNAL;
   }
   /* USER CODE BEGIN TIM1_Init 2 */
-
+  BSP_TIM1_Cnt = 0;
+  BSP_TIM1_Dur = 0;
+  BSP_TIM1_Loop = 0;
+  BSP_TIM1_Beeper = 0;
   /* USER CODE END TIM1_Init 2 */
   HAL_TIM_MspPostInit(&htim1);
   
+  BSP_TIM1_Start();
+  
   return BSP_ERROR_NONE;
+}
+
+BSP_Error_Type BSP_TIM1_Start(void)
+{
+  if(HAL_TIMEx_PWMN_Start_IT(&htim1, TIM_CHANNEL_1) != HAL_OK ) {
+      AQMERR("BSP_TIM1_Start");
+      return BSP_ERROR_INTERNAL;
+    }
+  return BSP_ERROR_NONE;
+}
+
+BSP_Error_Type BSP_TIM1_Stop(void)
+{
+  if(HAL_TIMEx_PWMN_Stop_IT(&htim1, TIM_CHANNEL_1) != HAL_OK ) {
+      return BSP_ERROR_INTERNAL;
+    }
+  return BSP_ERROR_NONE;
+}
+
+BSP_Error_Type BSP_TIM1_Set_Duty_Cycle(uint8_t DC)
+{
+  TIM_OC_InitTypeDef sConfigOC = {0};
+  
+  AQMDBG("BSP_TIM1_Set_Duty_Cycle %d on channel %d", DC, TIM_CHANNEL_1);
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = (htim1.Init.Period * DC / 100);
+  AQMDBG("BSP_TIM1_Set_Duty_Cycle Pulse = %d", sConfigOC.Pulse);
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    return BSP_ERROR_INTERNAL;
+  }
+  
+  TIM_CCxChannelCmd(TIM1, TIM_CHANNEL_1, TIM_CCx_ENABLE);
+  
+  return BSP_ERROR_NONE;
+}
+
+void BSP_TIM1_Start_PMW(void)
+{
+  TIM_CCxChannelCmd(TIM1, TIM_CHANNEL_1, TIM_CCx_ENABLE);
+}
+
+void BSP_TIM1_Stop_PMW(void)
+{
+  TIM_CCxChannelCmd(TIM1, TIM_CHANNEL_1, TIM_CCx_DISABLE);
+}
+
+void BSP_TIM1_Start_Beeper(uint8_t Dur, uint8_t Loop)
+{
+  BSP_TIM1_Cnt = Dur;
+  BSP_TIM1_Dur = Dur;
+  BSP_TIM1_Loop = Loop;
+  BSP_TIM1_Start_PMW();
+  BSP_TIM1_Beeper = 1;
 }
 
 /**
@@ -283,7 +350,22 @@ void TIM1_CC_IRQHandler(void)
   /* USER CODE END TIM1_CC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_CC_IRQn 1 */
-
+  if(BSP_TIM1_Beeper) {
+    BSP_TIM1_Cnt --;
+    if(BSP_TIM1_Cnt < BSP_TIM1_Dur / 2) {
+      BSP_TIM1_Stop_PMW();
+    }
+    if(BSP_TIM1_Cnt == 0) {
+      if(BSP_TIM1_Loop == 0) {
+        BSP_TIM1_Beeper = 0;
+        BSP_TIM1_Stop_PMW();
+      } else {
+        BSP_TIM1_Loop --;
+        BSP_TIM1_Cnt = BSP_TIM1_Dur;
+        BSP_TIM1_Start_PMW();
+      }
+    }
+  }
   /* USER CODE END TIM1_CC_IRQn 1 */
 }
 

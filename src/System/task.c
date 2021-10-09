@@ -8,11 +8,9 @@
 /* hardware*/
 #include "clock.h"
 #include "button.h"
-#include "alarm.h"
 #include "console.h"
 
 /*
-  EV_250MS            = 0, // 大约每250ms转一下
   EV_250MS            = 0, // 大约每250ms转一下
   EV_1S               = 1, // 大约每1s转一下  
   EV_BUTTON_SCAN         = 2, // 扫描按键 
@@ -26,8 +24,10 @@
   EV_BUTTON_MOD_UP       = 10, // mod键抬起 
   EV_BUTTON_MOD_SET_PRESS    = 11, // mod set 键同时短按
   EV_BUTTON_MOD_SET_LPRESS   = 12, // mod set 键同时长按 
-
-  EV_COUNT  
+  EV_VT1,
+  EV_VT2,
+  EV_CHARGER,  // 插入USB充电器
+  EV_POWEROFF,
 */
 const char * task_names[] =
 {
@@ -44,13 +44,9 @@ const char * task_names[] =
   "EV_BUTTON_MOD_UP",
   "EV_BUTTON_MOD_SET_PRESS",
   "EV_BUTTON_MOD_SET_LPRESS",
-  "EV_ACC",
-  "EV_TIMER",
-  "EV_ALARM0",
-  "EV_ALARM1", 
   "EV_VT1",
   "EV_VT2",  
-  "EV_PLAYER_STOP",
+  "EV_CHARGER",
   "EV_POWEROFF"
 };
 
@@ -83,12 +79,8 @@ static const TASK_PROC task_procs[EV_CNT] =
   button_mod_set_proc, 
   null_proc,
   null_proc,
-  alarm_proc,
-  alarm_proc,
-  null_proc,  
   null_proc,
   null_proc,
-  null_proc
 };
 
 
@@ -116,6 +108,6 @@ void task_dump(void)
 {
   unsigned char i;
   for (i = 0 ; i < EV_CNT; i ++) {
-    IVDBG("[%02bd][%s] %c\n", i, task_names[i], task_test(i) ? '1' : '0');
+    AQMDBG("[%02bd][%s] %c\n", i, task_names[i], task_test(i) ? '1' : '0');
   }
 }

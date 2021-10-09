@@ -19,6 +19,25 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "debug.h"
+#include "delay.h"
+#include "i2c.h"
+#include "rom.h"
+#include "rtc.h"
+#include "tim.h"
+#include "usart.h"
+#include "key.h"
+#include "power.h"
+#include "pms.h"
+#include "lcd1602.h"
+
+#include "beeper.h"
+#include "button.h"
+#include "config.h"
+#include "sm.h"
+#include "clock.h"
+#include "task.h"
+#include "console.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -47,7 +66,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -56,6 +74,13 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
+
+static void PrintBsp(const char * bsp, BSP_Error_Type res)
+{
+  res == BSP_ERROR_NONE ? 
+    AQMINFO("%s %s", bsp, "OK") : AQMERR("%s %s", bsp, "FAILED");
+}
+
 
 /**
   * @brief  The application entry point.
@@ -80,22 +105,38 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  delay_init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  
+  PrintBsp("USART1 ", BSP_USART1_Init());
+  PrintBsp("USART2 ", BSP_USART2_Init());
+  PrintBsp("I2C    ", BSP_I2C_Init());
+  PrintBsp("ROM    ", BSP_ROM_Init());
+  config_init(); 
+  PrintBsp("RTC    ", BSP_RTC_Init());
+  PrintBsp("TIM1   ", BSP_TIM1_Init());
+  PrintBsp("TIM2   ", BSP_TIM2_Init());
+  PrintBsp("Key    ", BSP_Key_Init());
+  PrintBsp("Power  ", BSP_Power_Init());
+  PrintBsp("PMS    ", BSP_PMS_Init());
+  PrintBsp("LCD1602", BSP_LCD1602_Init());
+  
   /* USER CODE END 2 */
-
+  task_init();
+  sm_init();
+  console_init();
+  beeper_init();
+  button_init();
+  clock_init();
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+    task_run();
+    console_run();
   }
   /* USER CODE END 3 */
 }
@@ -144,50 +185,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_GPIO_Init(void)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOD_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, POWER_Pin|PMS_RESET_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(PMS_SET_GPIO_Port, PMS_SET_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pins : POWER_Pin PMS_RESET_Pin */
-  GPIO_InitStruct.Pin = POWER_Pin|PMS_RESET_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PMS_SET_Pin */
-  GPIO_InitStruct.Pin = PMS_SET_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(PMS_SET_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : INT_KEY_MOD_Pin INT_KEY_SET_Pin */
-  GPIO_InitStruct.Pin = INT_KEY_MOD_Pin|INT_KEY_SET_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
 }
 
 /* USER CODE BEGIN 4 */

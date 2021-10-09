@@ -189,7 +189,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>7</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103x6</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Drivers/BSP</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Drivers/BSP;../System;../System/Console;../System/StateMachine</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -558,7 +558,80 @@
               <FileType>1</FileType>
               <FilePath>..\Drivers\BSP\key.c</FilePath>
             </File>
+            <File>
+              <FileName>power.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\power.c</FilePath>
+            </File>
+            <File>
+              <FileName>pms.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\pms.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd1602.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\lcd1602.c</FilePath>
+            </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/System</GroupName>
+          <Files>
+            <File>
+              <FileName>beeper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\beeper.c</FilePath>
+            </File>
+            <File>
+              <FileName>button.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\config.c</FilePath>
+            </File>
+            <File>
+              <FileName>console.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\console.c</FilePath>
+            </File>
+            <File>
+              <FileName>sm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\sm.c</FilePath>
+            </File>
+            <File>
+              <FileName>task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\task.c</FilePath>
+            </File>
+            <File>
+              <FileName>clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\clock.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/System/Console</GroupName>
+          <Files>
+            <File>
+              <FileName>con_help.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\Console\con_help.c</FilePath>
+            </File>
+            <File>
+              <FileName>con_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\System\Console\con_clock.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/System/State Machine</GroupName>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>

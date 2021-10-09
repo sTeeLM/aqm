@@ -1,5 +1,5 @@
-#ifndef __IVCLOCK_BUTTON_H__
-#define __IVCLOCK_BUTTON_H__
+#ifndef __AQM_BUTTON_H__
+#define __AQM_BUTTON_H__
 
 #include <stdint.h>
 #include "cext.h"

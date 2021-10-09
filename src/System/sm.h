@@ -1,5 +1,5 @@
-#ifndef __IVCLOCK_SM_H__
-#define __IVCLOCK_SM_H__
+#ifndef __AQM_SM_H__
+#define __AQM_SM_H__
 
 #include <stdint.h>
 #include <stddef.h>
@@ -7,14 +7,10 @@
 
 enum sm_functions
 {
-  SM_CLOCK_DISPLAY  = 0,    // 时钟功能
-  SM_SET_TIME,              // 闹钟功能
-  SM_SET_DATE,
-  SM_SET_ALARM,
-  SM_SET_PARAM,
-  SM_TIMER,
-  SM_STOP_WATCH,            // 马表功能
-  SM_ALARM,
+  SM_AQM_DISPLAY  = 0,    // 显示测量数值
+  SM_SET_TIME,            // 设置时间
+  SM_SET_DATE,            // 设置日期
+  SM_SET_PARAM,           // 设置参数
   SM_FUNCTION_CNT
 };
 

@@ -1,5 +1,5 @@
-#ifndef __IVCLOCK_BEEPER_H__
-#define __IVCLOCK_BEEPER_H__
+#ifndef __AQM_BEEPER_H__
+#define __AQM_BEEPER_H__
 
 #include <stdint.h>
 #include "cext.h"

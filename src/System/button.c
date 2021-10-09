@@ -4,8 +4,8 @@
 #include "delay.h"
 #include "cext.h"
 #include "task.h"
-#include "clock.h"
 #include "debug.h"
+#include "clock.h"
 #include "sm.h"
 #include "beeper.h"
 
@@ -99,17 +99,17 @@ void button_mod_proc(enum task_events ev)
 {
   switch (ev) {
     case EV_BUTTON_MOD_DOWN:
-      IVDBG("button_mod_proc EV_BUTTON_MOD_DOWN");
+      AQMDBG("button_mod_proc EV_BUTTON_MOD_DOWN");
       beeper_beep();
       break;
     case EV_BUTTON_MOD_UP:
-      IVDBG("button_mod_proc EV_BUTTON_MOD_UP");
+      AQMDBG("button_mod_proc EV_BUTTON_MOD_UP");
       break; 
     case EV_BUTTON_MOD_PRESS:
-      IVDBG("button_mod_proc EV_BUTTON_MOD_PRESS");
+      AQMDBG("button_mod_proc EV_BUTTON_MOD_PRESS");
       break;
     case EV_BUTTON_MOD_LPRESS:
-      IVDBG("button_mod_proc EV_BUTTON_MOD_LPRESS");
+      AQMDBG("button_mod_proc EV_BUTTON_MOD_LPRESS");
       break; 
     default:
       ;
@@ -122,17 +122,17 @@ void button_set_proc(enum task_events ev)
 {
   switch (ev) {
     case EV_BUTTON_SET_DOWN:
-      IVDBG("button_set_proc EV_BUTTON_SET_DOWN");
+      AQMDBG("button_set_proc EV_BUTTON_SET_DOWN");
       beeper_beep();
       break;
     case EV_BUTTON_SET_UP:
-      IVDBG("button_set_proc EV_BUTTON_SET_UP");
+      AQMDBG("button_set_proc EV_BUTTON_SET_UP");
       break; 
     case EV_BUTTON_SET_PRESS:
-      IVDBG("button_set_proc EV_BUTTON_SET_PRESS");
+      AQMDBG("button_set_proc EV_BUTTON_SET_PRESS");
       break;
     case EV_BUTTON_SET_LPRESS:
-      IVDBG("button_set_proc EV_BUTTON_SET_LPRESS");
+      AQMDBG("button_set_proc EV_BUTTON_SET_LPRESS");
       break; 
     default:
       ;
@@ -146,10 +146,10 @@ void button_mod_set_proc(enum task_events ev)
 {
   switch (ev) {
     case EV_BUTTON_MOD_SET_PRESS:
-      IVDBG("button_mod_set_proc EV_BUTTON_MOD_SET_PRESS");
+      AQMDBG("button_mod_set_proc EV_BUTTON_MOD_SET_PRESS");
       break;
     case EV_BUTTON_MOD_SET_LPRESS:
-      IVDBG("button_mod_set_proc EV_BUTTON_MOD_SET_LPRESS");
+      AQMDBG("button_mod_set_proc EV_BUTTON_MOD_SET_LPRESS");
       break;
     default:
       ;    

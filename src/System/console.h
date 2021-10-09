@@ -1,5 +1,5 @@
-#ifndef __IVCLOCK_CONSOLE_H__
-#define __IVCLOCK_CONSOLE_H__
+#ifndef __AQM_CONSOLE_H__
+#define __AQM_CONSOLE_H__
 
 #include <stdint.h>
 
